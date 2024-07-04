@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/static/img/logo_ProGest.png">
+    <link rel="stylesheet" href={{url_for('static',filename="css/home.css")}}>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div>
+<nav id="navbar">
+        <img src={{url_for('static',filename="/img/logo_Progest.png")}} alt="" width="50">
+        <form action="/app" method="POST">
+            <button class="button" type="submit"><a><img src={{url_for('static',filename="/img/back.png")}} alt="" width="30"></a>
+            </button>
+        </form>
+
+        <button class="button" type="submit"><a><img src={{url_for('static',filename="/img/menu.png")}} alt="" width="20"></a>
+        </button>
+
+        <form action="/projet">
+            <button class="button" type="submit"><a><img src={{url_for('static',filename="/img/more.png")}} alt="" width="20"></a>
+            </button>
+        </form>
+                <br>
+
+        <form action="/projet">
+            <button class="button" type="submit"><a><img src={{url_for('static',filename="/img/taches.png")}} alt="" width="20"></a>
+            Tâches</button>
+        </form>
+
+        <form action="/projet">
+            <button class="button" type="submit"><a><img src={{url_for('static',filename="/img/message.png")}} alt="" width="20"></a>
+            Messages</button>
+        </form>
+
+        <form action="/projet">
+            <button class="button" type="submit"><a><img src={{url_for('static',filename="/img/notifications.png")}} alt="" width="20"></a>
+            Notifications</button>
+        </form>
+</nav>
+    {%block content%}{%endblock%}
+</div>
+</body>
+</html>

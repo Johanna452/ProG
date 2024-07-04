@@ -1,0 +1,25 @@
+{%extends "base.html" %}
+
+{%block content%}
+<title>Home</title>
+<div class="container">
+
+     <h1>Projet</h1>
+     <div>
+          {% for nom in nomProjet %}
+             {% for n in nom %}
+          <span class=""><img alt="" src={{url_for('static',filename="img/default_img.png")}} width="199.9">
+</span>
+             {% endfor %}
+          {% endfor %}
+     </div>
+     <div>
+          {% for nom in nomProjet %}
+             {% for n in nom %}
+          <span class="nomProjet"><a class="link" href="/projet1">{{n[0]}}</a></span>
+             {% endfor %}
+          {% endfor %}
+     </div>
+</div>
+
+{%endblock%}
