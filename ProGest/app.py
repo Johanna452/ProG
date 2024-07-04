@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index(): #afficher formulaire de connexion
-    return render_template("index.html")
+    return render_template("chatbox.html")
 
 
 @app.route('/traitement', methods=['POST'])
