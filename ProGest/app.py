@@ -29,9 +29,9 @@ def traitement():
         return render_template("alert.html")
 
 
-@app.route("/projet",methods=['GET'])
+@app.route("/addProject",methods=['GET'])
 def projet(): #accéder au formulaire pour créer un projet
-    return render_template("projet.html")
+    return render_template("addProject.html")
 
 @app.route("/app", methods=['POST'])
 def creer(): #créer un projet
@@ -53,9 +53,9 @@ def home():
 def taches():
     return render_template("taches.html")
 
-@app.route("/projet1")
+@app.route("/projet")
 def projet1():
-    return render_template("projet1.html")
+    return render_template("projet.html")
 
 
 if __name__ == '__main__':
