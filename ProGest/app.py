@@ -1,11 +1,11 @@
-
 from flask import Flask, render_template, request
-from model import addNewProject,addNewUser,getAllProjects
+from model import addNewProject, addNewUser, getNameProjects, get_name_project_by_id, delete_project_by_id
 
 app = Flask(__name__)
 
+
 @app.route("/")
-def index(): #afficher formulaire de connexion
+def index():  # afficher formulaire de connexion
     return render_template("index.html")
 
 
@@ -20,42 +20,72 @@ def traitement():
         nomProjet = donnees.get('nomProjet')
         description = donnees.get('description')
         objectifs = donnees.get('objectifs')
-        addNewProject(nomProjet, description, objectifs)
+        DateDeb = donnees.get('DateDeb')
+        DateFin = donnees.get('DateFin')
+        addNewProject(nomProjet, description, objectifs, DateDeb, DateFin)
 
-        nomProjet = getAllProjects(),
+        nomProjet = getNameProjects(),
         return render_template("home.html", nomProjet=nomProjet)
 
     else:
         return render_template("alert.html")
 
 
-@app.route("/addProject",methods=['GET'])
-def projet(): #accéder au formulaire pour créer un projet
+@app.route("/addProject", methods=['GET'])
+def projet():  # accéder au formulaire pour créer un projet
     return render_template("addProject.html")
 
+
 @app.route("/app", methods=['POST'])
-def creer(): #créer un projet
-        donnees = request.form
-        nomProjet= donnees.get('nomProjet')
-        description = donnees.get('description')
-        objectifs = donnees.get('objectifs')
-        addNewProject(nomProjet, description, objectifs)
+def creer():  # créer un projet
+    donnees = request.form
+    nomProjet = donnees.get('nomProjet')
+    description = donnees.get('description')
+    objectifs = donnees.get('objectifs')
+    DateDeb = donnees.get('DateDeb')
+    DateFin = donnees.get('DateFin')
+    addNewProject(nomProjet, description, objectifs, DateDeb, DateFin)
 
-        nomProjet = getAllProjects(),
-        return render_template("home.html",nomProjet = nomProjet)
+    nomProjet = getNameProjects(),
+    return render_template("home.html", nomProjet=nomProjet)
 
 
-@app.route("/home",methods=['GET'])
+@app.route("/home", methods=['GET'])
 def home():
     return render_template("home.html")
 
-@app.route("/taches",methods=['GET'])
+
+@app.route("/taches", methods=['GET'])
 def taches():
     return render_template("taches.html")
 
-@app.route("/projet")
-def projet1():
-    return render_template("projet.html")
+
+@app.route("/Project/<string:id>")
+def project(id):
+    donnees = request.form
+    nomProjet = donnees.get('nomProjet')
+    description = donnees.get('description')
+    objectifs = donnees.get('objectifs')
+    DateDeb = donnees.get('DateDeb')
+    DateFin = donnees.get('DateFin')
+    addNewProject(nomProjet, description, objectifs, DateDeb, DateFin)
+
+    projet = get_name_project_by_id(id)
+    return render_template("Project.html",projet=projet)
+
+
+
+@app.route("/delete")
+def delete():
+    donnees = request.form
+    nomProjet = donnees.get('nomProjet')
+    description = donnees.get('description')
+    objectifs = donnees.get('objectifs')
+    DateDeb = donnees.get('DateDeb')
+    DateFin = donnees.get('DateFin')
+
+    projet= delete_project_by_id(id)
+    return render_template("Project.html",projet=projet)
 
 
 if __name__ == '__main__':
